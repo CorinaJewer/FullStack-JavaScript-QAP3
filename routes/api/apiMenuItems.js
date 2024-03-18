@@ -1,18 +1,38 @@
 const express = require('express');
 const router = express.Router();
+const menuItemsDAL = require('../../services/pg.menuItems.dal')
 
 router.get('/', async (req, res) => {
-    const menuItems = [
+    /*const menuItems = [
         {id: 7, name: 'soup', price: '7.99'},
         {id: 1, name: 'pancakes', price: '14.99'},
         {id: 4, name: 'burger', price: '17.99'},
-    ];
-    res.send(menuItems);
-  });
+    ];*/
+    //res.send(menuItems);
+  if(DEBUG) console.log('ROUTE: /api/menu-items/ GET' + req.url);
+  try {
+      let menuItems = await menuItemsDAL.getMenuItems(); 
+      if(DEBUG) console.table(menuItems);
+      res.json(menuItems);
+  } catch {
+      res.statusCode = 500;
+      res.json({message: "Internal Server Error", status: 500});
+  };
+});
 
-router.get('/:id', async (req, res) => { }); 
-router.get('/:id/edit', async (req, res) => {});
-router.get('/:id/delete', async (req, res) => {});
+router.get('/:id', async (req, res) => { 
+  if(DEBUG) console.log('ROUTE: /api/logins/:id GET' + req.url);
+    try {
+        let menuItem = await menuItemsDAL.getMenuItemById(req.params.id); 
+        if(DEBUG) console.table(menuItem);
+        res.json(menuItem);
+    } catch {
+        // log this error to an error log file.
+        res.statusCode = 500;
+        res.json({message: "Internal Server Error", status: 500});
+    };
+}); 
+
 router.post('/', async (req, res) => {});
 router.patch('/:id', async (req, res) => {});
 router.delete('/:id', async (req, res) => {});
