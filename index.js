@@ -4,6 +4,8 @@ const menuItemsRoute = require('./routes/menuItems');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.static('images'));
+app.use(express.urlencoded({ extended: true, }));
+
 const port = 3000;
 
 global.DEBUG = true;
