@@ -10,7 +10,7 @@
             </div>  
             <% menuItems.forEach(item => { %>
                 <div class="menu-items-list">
-                    <strong>Menu ID:</strong> <%= item.menu_id %> - <strong>Name:</strong> <%= item.name %> - <strong>Price: </strong>$<%= item.price %> - <strong>Category:</strong> <%= item.category %> - <strong>Image-URL:</strong> <%= item.image_url %>
+                    <strong>Menu ID:</strong> <%= item.menu_id %> - <strong>Name:</strong> <%= item.name %> - <strong>Price: </strong>$<%= item.price %>
                     <div class = "links">
                         <a href = "menu-items/<%= item.menu_id %>/edit"><button id = "edit">Edit</button></a>
                         <span class = "space"></span>
@@ -18,6 +18,9 @@
                     </div>    
                 </div>
             <% }); %>
+
+            <hr>
+          
             <div class = "new-item">   
                 <form action="/menu-items" method="POST">
                     </br>

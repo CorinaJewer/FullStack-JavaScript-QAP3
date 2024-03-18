@@ -90,7 +90,7 @@ nav ul li a:hover {
     margin: 24px; 
     border-top: 1px solid lightgray;
     border-bottom:1px solid lightgray;
-    padding:16px;
+    padding:4px;
     overflow: hidden;   
 }
 
@@ -98,6 +98,7 @@ nav ul li a:hover {
     margin-top: 16px; 
     margin-left: 16px;
 }
+
 
 #add{
     margin-top:24px;
@@ -194,7 +195,7 @@ footer{
 
 #delete{
     border:none;
-    padding: 6px 12px;
+    padding: 4px 10px;
     background-color: #333;
     color: white;
     font-weight:500;
@@ -205,7 +206,7 @@ footer{
 
 #sign-out{
     border:none;
-    padding: 6px 12;
+    padding: 4px 8px;
     font-weight:500;
     background-color: lightgray;
     border-radius: 4px;
@@ -217,7 +218,7 @@ footer{
 
 #edit{
     border:none;
-    padding: 6px 12px;
+    padding: 4px 10px;
     background-color: #ecbd11;
     font-weight:500;
     margin-left: 8px;
@@ -236,6 +237,9 @@ footer{
     padding: 20px;
     border-radius: 5px;
     margin-bottom: 24px;
+    margin-top: 24px;
+    background-color: whitesmoke;
+    
 }
 
 .new-item label{
