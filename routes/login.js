@@ -4,14 +4,13 @@ const menuItemsDAL = require('../services/pg.menuItems.dal');
 const loginDAL = require('../services/pg.login.dal');
 
 router.get('/', async (req, res) => {
-    res.render('login', { error: null });
+  if(DEBUG) console.log('ROUTE: /login');
+  res.render('login', { error: null });
   });
 
-/*router.post('/', (req, res) => {
-  res.redirect('login/menu-items')
-});*/
 
 router.post('/', async (req, res) => {
+  if(DEBUG) console.log('ROUTE: /login POST');
   const { username, password } = req.body;
 
 try {
@@ -37,33 +36,29 @@ try {
 });
 
 router.get('/menu-items', async (req, res) => {
+  if(DEBUG) console.log('ROUTE: /login/menu-items GET');
     /*const menuItems = [
         {menu_id: 7, name: 'Soup', price: '7.99', category: 'Lunch'},
         {menu_id: 1, name: 'Pancakes', price: '14.99', category: 'Breakfast'},
         {menu_id: 4, name: 'Burger', price: '17.99', category: 'Dinner'}];*/
-
-        try {
-          let menuItems = await menuItemsDAL.getMenuItems(); 
-          if(DEBUG) console.table(menuItems);
-          res.render('menuItemsStaff', {menuItems:menuItems});
-        } catch {
-          res.render('500');
-        };
+  try {
+    let menuItems = await menuItemsDAL.getMenuItems(); 
+    if(DEBUG) console.table(menuItems);
+    res.render('menuItemsStaff', {menuItems:menuItems});
+  } catch {
+    res.render('500');
+  };
 });
 
 router.get('/menu-items/:id/edit', async (req, res) => {
-    const menuItem = 
-      {menu_id: 4, name: 'Burger', description: 'Grade A Beef Burger.', price: '17.99', category: 'Lunch'};
-    res.render('menuItemPatch', { locals:menuItem });
+  if(DEBUG) console.log('Menu ID: ' + req.params.id + ' PATCH');  
+  res.render('menuItemPatch');
 });
 
-router.get('/menu-items/:id', async (req, res) => {  
-}); 
 
 router.get('/menu-items/:id/delete', async (req, res) => {
-  const menuItem = 
-      {menu_id: 4, name: 'Burger', description: 'Grade A Beef Burger.', price: '17.99', category: 'Lunch'};
-    res.render('menuItemDelete', { locals:menuItem });
+  if(DEBUG) console.log('Menu ID: ' + req.params.id + ' DELETE');  
+  res.render('menuItemDelete');
 });
 
 
