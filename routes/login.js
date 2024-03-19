@@ -62,7 +62,18 @@ router.get('/menu-items/:id/delete', async (req, res) => {
 });
 
 
-router.post('/menu-items/', async (req, res) => {});
+router.post('/menu-items/', async (req, res) => {
+  if(DEBUG) console.log("menuItemsStaff.POST");
+  try {
+    await menuItemsDAL.addMenuItem(req.body.name, req.body.description, req.body.price, req.body.category, req.body.image_url);
+    res.redirect('/login/menu-items');
+  } catch (err){
+    res.status = 500
+    res.render('500');
+  } 
+});
+
+
 router.patch('/menu-items/:id', async (req, res) => {});
 router.delete('/menu-items/:id', async (req, res) => {});
 

@@ -33,4 +33,20 @@ var getMenuItemById = function(menu_id) {
   }); 
 };
 
-module.exports  = {getMenuItems, getMenuItemById};
+var addMenuItem = function(name, description, price, category, image_url) {
+  if(DEBUG) console.log("Menu-Items.pg.dal.addMenuItem()");
+  return new Promise(function(resolve, reject) {
+    const sql = `INSERT INTO public."Menu_Items"(name, description, price, category, image_url) \
+        VALUES ($1, $2, $3, $4, $5);`
+    dal.query(sql, [name, description, price, category, image_url], (err, result) => {
+      if (err) {
+          if(DEBUG) console.log(err);
+          reject(err);
+        } else {
+          resolve(result.rows);
+        }
+    }); 
+  });
+};
+
+module.exports  = {getMenuItems, getMenuItemById, addMenuItem};
