@@ -49,4 +49,18 @@ var addMenuItem = function(name, description, price, category, image_url) {
   });
 };
 
-module.exports  = {getMenuItems, getMenuItemById, addMenuItem};
+var patchMenuItem = function(menu_id, name, description, price, category, image_url) {
+  if(DEBUG) console.log("Menu_Items.pg.dal.patchMenuItem()");
+  return new Promise(function(resolve, reject) {
+    const sql = `UPDATE public."Menu_Items" SET name=$2, description=$3, price=$4, category=$5, image_url=$6 WHERE menu_id=$1;`;
+    dal.query(sql, [menu_id, name, description, price, category, image_url], (err, result) => {
+      if (err) {
+          reject(err);
+        } else {
+          resolve(result.rows);
+        }
+    }); 
+  });
+};
+
+module.exports  = {getMenuItems, getMenuItemById, addMenuItem, patchMenuItem};

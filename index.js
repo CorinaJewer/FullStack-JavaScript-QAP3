@@ -12,14 +12,13 @@ const port = 3000;
 global.DEBUG = true;
 
 app.get('/', (req,res) =>{
-    //res.send("Welcome to Martha's Good Eats Menu.")
-    res.render('index.ejs', { name: 'Peter'});
-})
+    res.render('index.ejs');
+});
 
-const menuItemsRouter = require('./routes/menuItems')
+const menuItemsRouter = require('./routes/menuItems');
 app.use('/menu-items', menuItemsRouter);
 
-const loginRouter = require('./routes/login')
+const loginRouter = require('./routes/login');
 app.use('/login', loginRouter);
 
 const apiMenuItemsRouter = require('./routes/api/apiMenuItems');

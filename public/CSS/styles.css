@@ -72,6 +72,17 @@ nav ul li a:hover {
     border: 1px solid grey;
 }
 
+.single-item{
+    display: flex;
+    flex-direction: column;
+    gap:24px;
+    margin: 24px; 
+    padding:16px;
+    border-radius: 8px;
+    border: 1px solid grey;
+}
+
+
 .menu-item img {
     width: 160px;
     height: 160px;
@@ -111,7 +122,11 @@ nav ul li a:hover {
 }
 
 .links{
-    float:right;
+    float:right;   
+}
+
+.links a{
+    text-decoration: none;
 }
 
 .space{
@@ -127,6 +142,12 @@ nav ul li a:hover {
 
 input{
     height:24px;
+    width:400px;
+    padding:8px;
+    overflow: hidden;  
+}
+
+select{
     width:400px;
     padding:8px;
     overflow: hidden;  
@@ -148,6 +169,10 @@ input{
     text-align: center;
     margin-top: 8px;
     margin-bottom: 8px;
+}
+
+.edit-item input{
+    height: 24px;
 }
 
 #update{
@@ -223,7 +248,8 @@ footer{
     font-weight:500;
     margin-left: 8px;
     border-radius: 4px;
-    cursor: pointer;   
+    cursor: pointer; 
+ 
 }
 
 .logout{
@@ -245,6 +271,7 @@ footer{
 .new-item label{
     display: block;
     margin-bottom: 8px;
+    margin-top: 8px;
 }
 
 .new-item input{
