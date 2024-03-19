@@ -12,9 +12,15 @@
                 <div class="menu-items-list">
                     <strong>Menu ID:</strong> <%= item.menu_id %> - <strong>Name:</strong> <%= item.name %> - <strong>Price: </strong>$<%= item.price %>
                     <div class = "links">
-                        <a href = "menu-items/<%= item.menu_id %>/edit"><button id = "edit">Edit</button></a>
+                        <a href="menu-items/<%= item.menu_id %>/edit?name=<%= item.name %>">
+                        <button id="edit">Edit</button>
+                        </a>
+                          
                         <span class = "space"></span>
-                        <a href="menu-items/<%= item.menu_id %>/delete"><button id = "delete">Delete</button></a></br> 
+                        <a href="menu-items/<%= item.menu_id %>/delete?name=<%= item.name %>">
+                        <button id = "delete">Delete</button>
+                        </a>
+                    </br> 
                     </div>    
                 </div>
             <% }); %>
@@ -36,7 +42,12 @@
                         <input type="text" id="price" name="price" value="<%= locals.price %>" required>
                     
                     <label>Category:</label>
-                        <input type="text" id="category" name="category" value="<%= locals.category %>" required>
+                        <!-- <input type="text" id="category" name="category" value="<%= locals.category %>" required> -->
+                        <select name="category" value="<%= locals.category %>" required>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                        </select>
                     
                     <label>Image URL:</label>
                         <input type="text" id="image_url" name="image_url" value="<%= locals.image_url %>" required>
