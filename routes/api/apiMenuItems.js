@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => { 
-  if(DEBUG) console.log('ROUTE: /api/logins/:id GET' + req.url);
+  if(DEBUG) console.log('ROUTE: /api/menu-items/:id GET' + req.url);
     try {
         let menuItem = await menuItemsDAL.getMenuItemById(req.params.id); 
         if(DEBUG) console.table(menuItem);
@@ -33,7 +33,19 @@ router.get('/:id', async (req, res) => {
     };
 }); 
 
-router.post('/', async (req, res) => {});
+router.post('/', async (req, res) => {
+           if(DEBUG) {console.log('ROUTE: /api/menu-items/ POST');}        
+        try {
+            await menuItemsDAL.addMenuItem(req.body.name, req.body.description, req.body.price, req.body.category, req.body.image_url );
+            res.statusCode = 201;
+            res.json({message: "Created", status: 201});
+        } catch {
+            // log this error to an error log file.
+            res.statusCode = 500;
+            res.json('500');
+        } 
+     
+});
 router.patch('/:id', async (req, res) => {});
 router.delete('/:id', async (req, res) => {});
 

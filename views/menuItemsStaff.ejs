@@ -22,7 +22,7 @@
             <hr>
           
             <div class = "new-item">   
-                <form action="/menu-items" method="POST">
+                <form action="/login/menu-items" method="POST">
                     </br>
                     <label><h3>Add New Menu Item:</h3></label>
                     </br>
@@ -41,7 +41,7 @@
                     <label>Image URL:</label>
                         <input type="text" id="image_url" name="image_url" value="<%= locals.image_url %>" required>
                     </br>
-                    <button id = "add">Add New Item</button>
+                    <button type='submit' id = 'add'>Add New Item</button>
                 </form>
             </div>                            
         </div>         
