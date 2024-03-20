@@ -105,10 +105,27 @@ nav ul li a:hover {
     overflow: hidden;   
 }
 
+.menu-items-list a{
+    text-decoration: none;
+    color:black; 
+    display: inline-block;
+    padding: 8px 16px; 
+    border-radius: 4px;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.menu-items-list a:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  
+}
+
+
+
 .menu-items-edit h2{
     margin-top: 16px; 
     margin-left: 16px;
 }
+
+
 
 
 #add{
@@ -230,6 +247,17 @@ footer{
 }
 
 #sign-out{
+    border:none;
+    padding: 4px 8px;
+    font-weight:500;
+    background-color: lightgray;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 16px;
+    margin-right: 16px;
+}
+
+#return{
     border:none;
     padding: 4px 8px;
     font-weight:500;
