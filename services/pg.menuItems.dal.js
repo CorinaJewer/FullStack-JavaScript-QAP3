@@ -63,4 +63,18 @@ var patchMenuItem = function(menu_id, name, description, price, category, image_
   });
 };
 
-module.exports  = {getMenuItems, getMenuItemById, addMenuItem, patchMenuItem};
+var deleteMenuItem = function(menu_id) {
+  if(DEBUG) console.log("Menu_Items.pg.dal.deleteMenuItem()");
+  return new Promise(function(resolve, reject) {
+    const sql = `DELETE FROM public."Menu_Items" WHERE menu_id = $1;`
+    dal.query(sql, [menu_id], (err, result) => {
+      if (err) {
+          reject(err);
+        } else {
+          resolve(result.rows);
+        }
+    }); 
+  });
+};
+
+module.exports  = {getMenuItems, getMenuItemById, addMenuItem, patchMenuItem, deleteMenuItem};
