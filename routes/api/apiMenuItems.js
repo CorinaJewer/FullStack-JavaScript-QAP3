@@ -27,7 +27,6 @@ router.get('/:id', async (req, res) => {
         if(DEBUG) console.table(menuItem);
         res.json(menuItem);
     } catch {
-        // log this error to an error log file.
         res.statusCode = 500;
         res.json({message: "Internal Server Error", status: 500});
     };
@@ -40,14 +39,14 @@ router.post('/', async (req, res) => {
             res.statusCode = 201;
             res.json({message: "Created", status: 201});
         } catch {
-            // log this error to an error log file.
             res.statusCode = 500;
             res.json('500');
         } 
      
 });
-router.patch('/:id', async (req, res) => {});
-router.delete('/:id', async (req, res) => {});
+
+//router.patch('/:id', async (req, res) => {});
+//router.delete('/:id', async (req, res) => {});
 
 
 module.exports = router;

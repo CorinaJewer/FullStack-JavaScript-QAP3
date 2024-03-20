@@ -9,10 +9,3 @@ const pool = new Pool({
 
 module.exports = pool;
 
-/*const pool = new Pool({
-  user: 'corina',
-  host: 'localhost',
-  database: 'qap3',
-  password: 'corina',
-  port: 5432,
-});*/

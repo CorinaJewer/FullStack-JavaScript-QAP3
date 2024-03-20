@@ -6,7 +6,6 @@ var getLoginByUsername = function(username) {
       const sql = `SELECT username, password FROM public."Logins" WHERE username = $1`;
       dal.query(sql, [username], (err, result) => {
         if (err) {
-          // logging should go here
           if(DEBUG) console.log("Unable to verify username.");
           reject(err);
         } else {
