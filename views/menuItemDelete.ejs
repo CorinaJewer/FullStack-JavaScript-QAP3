@@ -4,12 +4,12 @@
     
     <body>
         <div class="delete">
-            <form action="/menu-items/<%= locals.menu_id %>/delete?_method=DELETE" method="POST">
+            <form action="/login/menu-items/<%= locals.menu_id %>/delete?_method=DELETE" method="POST">
                 <label>Are you sure you want to delete this Menu Item?</label></br>
                 </br>
                 <input type="text" id=<%=locals.menu_id %> name="name" value= "Menu ID: <%= locals.menu_id %> - <%= locals.name %>" readonly>
             
-                <button id = "delete">DELETE</button>
+                <button type="submit" id = "delete">DELETE</button>
             </form>
         </div>
     </body>

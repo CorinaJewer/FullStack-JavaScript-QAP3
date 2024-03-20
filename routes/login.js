@@ -66,13 +66,14 @@ router.get('/menu-items/:id', async (req, res) => {
 router.get('/menu-items/:id/edit', async (req, res) => {
   if(DEBUG) console.log('ROUTE /login/menu-items ' + req.params.id + ' edit');
   let menuItem = await menuItemsDAL.getMenuItemById(req.params.id) || []; 
-  res.render('menuItemPatch', {...menuItem[0], menu_id: req.params.id, name: req.query.name});
+  res.render('menuItemPatch', {...menuItem[0]});
 });
 
 
 router.get('/menu-items/:id/delete', async (req, res) => {
-  if(DEBUG) console.log('ROUTE: /login/menu-items ' + req.params.id + ' DELETE');  
-  res.render('menuItemDelete', {menu_id:req.params.id, name: req.query.name});
+  if(DEBUG) console.log('ROUTE: /login/menu-items ' + req.params.id + ' DELETE');
+  let menuItem = await menuItemsDAL.getMenuItemById(req.params.id) || [];  
+  res.render('menuItemDelete', {...menuItem[0]});
 });
 
 
@@ -100,6 +101,13 @@ router.patch('/menu-items/:id/edit', async (req, res) => {
 
 });
 
-router.delete('/menu-items/:id', async (req, res) => {});
+router.delete('/menu-items/:id/delete', async (req, res) => {              if(DEBUG) console.log('MenuItems.DELETE: ' + req.params.id);
+  try {
+      await menuItemsDAL.deleteMenuItem(req.params.id);
+      res.redirect('/login/menu-items');
+  } catch {
+      res.status(500);
+      res.render('500');
+  }});
 
 module.exports = router;
