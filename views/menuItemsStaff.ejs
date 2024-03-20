@@ -9,8 +9,10 @@
                 <a href="/"><button id = "sign-out">Sign Out</button></a>
             </div>  
             <% menuItems.forEach(item => { %>
-                <div class="menu-items-list">
+                    <div class="menu-items-list">
+                        <a href="menu-items/<%= item.menu_id %>">   
                     <strong>Menu ID:</strong> <%= item.menu_id %> - <strong>Name:</strong> <%= item.name %> - <strong>Price: </strong>$<%= item.price %>
+                    </a>        
                     <div class = "links">
                         <a href="menu-items/<%= item.menu_id %>/edit?name=<%= item.name %>">
                         <button id="edit">Edit</button>
